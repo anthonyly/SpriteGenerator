@@ -5,11 +5,11 @@ HTML 5 canvas sprite generator to png image.
 
 ## Website
 
-* [SpriteGenerator.net](http://spritegenerator.net)
+* [http://spritegenerator.net](http://spritegenerator.net)
 
 ## Compatibility
 
-* Modern web browser
+* Modern web browsers
 
 ## Credits
 
