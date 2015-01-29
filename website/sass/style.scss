@@ -1,0 +1,360 @@
+@import "compass";
+
+// Bases
+@import "compass/reset";
+
+@import url(http://fonts.googleapis.com/css?family=Lobster+Two);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700);
+
+@mixin font-size($sizeValue: 1.6) {
+  font-size: ($sizeValue * 10) + px;
+  font-size: $sizeValue + rem;
+}
+
+// Flatuicolors
+$alizarin: #e74c3c;
+$black: #000;
+$blue: #2980b9;
+$clouds: #ecf0f1;
+$greensea: #16a085;
+$midnightblue: #2c3e50;
+$orange: #f39c12;
+$peterriver: #3498db;
+$pomegranate: #c0392b;
+$silver: #bdc3c7;
+$sunflower: #f1c40f;
+$turquoise: #1abc9c;
+$wetasphalt: #34495e;
+$white: #fff;
+
+$hFoot : 50px;
+
+* {
+	@include box-sizing(border-box);
+}
+
+html,
+body {
+  	height: 100%;
+}
+
+html {
+  	font-size: 62.5%;
+}
+
+body {
+	font-family: 'Source Sans Pro', sans-serif;
+	line-height: 1;
+	min-width: 760px;
+ 	@include font-size(1.3);
+}
+
+a {
+	color: $black;
+	text-decoration: none;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.table {
+	display: table;
+	width: 100%;
+}
+
+.table-cell {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+// Buttons
+.btn {
+	background: $alizarin;
+	border: 2px solid $pomegranate;
+	color: $white;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 16px;
+	padding: 7px 20px;
+	@include border-radius(2px);
+	@include transition(all 0.3s ease-in-out);
+	body &:hover {
+		border-color: transparent;
+	}
+	&.btn-green {
+		background: $turquoise;
+		border-color: $greensea;
+	}
+	&.btn-blue {
+		background: $peterriver;
+		border-color: $blue;
+	}
+	&.btn-yellow {
+		background: $sunflower;
+		border-color: $orange;
+	}
+	&.btn-file {
+		overflow: hidden;
+		position : relative;
+		input {
+			cursor: pointer;
+			height: 100%;
+			left: 0;
+			position : absolute;
+			top: 0;
+			width: 100%;
+			@include opacity(0.000001);
+		}
+	}
+	&.btn-save {
+		@include opacity(0);
+		@include transition(all 0.3s ease-in-out);
+		.rock & {
+			@include opacity(1);
+		}
+	}
+}
+
+// Header & Footer
+.wrap {
+  	margin-bottom: -$hFoot;
+  	min-height: 100%;
+}
+
+.wrap:after {
+  	content: "";
+  	display: block;
+}
+
+footer,
+.wrap:after {
+  	height: $hFoot;
+}
+
+header,
+footer {
+  	background-color: $midnightblue;
+  	height: $hFoot;
+  	position: relative;
+  	z-index: 1;
+}
+
+header {
+	position: relative;
+	@include pie-clearfix();
+	.table-cell {
+		width: (100% / 3);
+	}
+	h1 {
+		font-family: 'Lobster Two', cursive;
+		text-align: center;
+		@include font-size(2.2);
+		a {
+			background: image-url("logo-30.png") 0 0 no-repeat;
+			color: $white;
+			display: inline-block;
+			height: 30px;
+			line-height: 30px;
+			padding-left: 40px;
+			@include transition(color 0.3s ease-in-out);
+			&:hover {
+				color: $blue;
+			}
+		}
+	}
+	.cta-wrap {
+		padding-right: 10px;
+		text-align: right;
+	}
+	.form-add-file {
+		padding-left: 10px;
+	}
+}
+
+footer {
+	.table-cell {
+		padding: 0 10px;
+		text-align: right;
+		width: 50%;
+		&:first-child {
+			text-align: left;
+		}
+	}
+	a {
+		color: $blue;
+		@include transition(color 0.3s ease-in-out);
+		&:hover {
+			color: $white;
+		}
+		&:before {
+			content: "\f099";
+			font-family: "FontAwesome";
+			padding-right: 4px;
+		}
+	}
+}
+
+// Sidebar
+.sidebar {
+	border-right: 10px solid $midnightblue;
+	height: 100%;
+	left: 0;
+	padding: 50px 0 100px;
+	position: absolute;
+	top: 0;
+	width: 260px;
+}
+.tuto {
+	background-color: $blue;
+	color: $white;
+	font-size: 18px;
+	line-height: 20px;
+	margin: 20px auto;
+	padding: 50px 20px 20px 20px;
+	position: relative;
+	text-align: center;
+	width: 200px;
+	@include border-radius(2px);
+	&:before {
+		content: "\f05a";
+		height: 40px;
+		font-family: "FontAwesome";
+		font-size: 30px;
+		line-height: 40px;
+		left: 50%;
+		margin-left: -20px;
+		position: absolute;
+		text-align: center;
+		top: 5px;
+		width: 40px;
+	}
+	.rock & {
+		display: none;
+	}
+}
+.sidebar-container {
+	position: relative;
+}
+.sidebar-actions {
+	@include opacity(0);
+	@include transition(all 0.3s ease-in-out);
+	.rock & {
+		@include opacity(1);
+	}
+	background-color: $wetasphalt;
+	bottom: 50px;
+	height: 50px;
+	position: absolute;
+	.action {
+		padding: 0 10px;
+		text-align: right;
+		width: 50%;
+		&:first-child {
+			text-align: left;
+		}
+	}
+}
+
+.list-images {
+	.image-info-top {
+		padding: 10px;
+		@include pie-clearfix();
+		.image-info-top-left {
+			background: image-url("bg-scene.gif");
+			float: left;
+			height: 40px;
+			width: 40px;
+			img {
+				max-height: 40px;
+				max-width: 40px;
+			}
+		}
+		.image-info-top-right {
+			line-height: 40px;
+			padding: 0 10px;
+			width: 190px;
+			span, input {
+				color: $midnightblue;
+				display: inline-block;
+				width: 100%;
+			}
+			span:before {
+				content: "\f040";
+				font-family: "FontAwesome";
+				padding-right: 4px;
+			}
+			input {
+				border: 1px solid $clouds;
+				padding: 4px 8px;
+				@include border-radius(2px);
+				&:focus {
+					border-color: $blue;
+				}
+			}
+			.display-classname {
+				cursor: text;
+				height: 100%;
+				&:hover {
+					color: $blue;
+				}
+			}
+			.form-classname {
+				display: none;
+			}
+		}
+	}
+	.image-info-bot {
+		background-color: $clouds;
+		width: 100%;
+		td {
+			font-size: 10px;
+			padding: 4px 0;
+			text-align: center;
+		}
+	}
+}
+
+// Panel canvas
+section {
+	height: 100%;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+.panel-container,
+.sidebar-container {
+	height: 100%;
+	overflow: auto;
+	width: 100%;
+}
+
+.panel {
+	height: 100%;
+	padding: 50px 0 50px 260px;
+	width: 100%;
+}
+
+.canvas-container {
+	display: table-cell;
+	vertical-align: middle;
+	&.dragenter {
+		border: 4px dashed $blue;
+	}
+}
+
+.canvas-wrap {
+	display: table;
+	height: 100%;
+	text-align: center;
+	width: 100%;
+}
+
+canvas {
+	background: image-url("bg-scene.gif");
+}
